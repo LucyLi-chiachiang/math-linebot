@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['namespace' => 'Api'], function() {
+Route::group(['namespace' => 'App\Http\Controllers\Api'], function() {
     Route::post('/line/webhook', 'LineWebhookController@webhook')->name('line.webhook');
 });
