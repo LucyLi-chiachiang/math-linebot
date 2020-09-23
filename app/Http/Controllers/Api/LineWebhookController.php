@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 
+use App\Services\Calculator;
 use App\Services\CreateLineBot;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,7 +13,7 @@ use ReflectionException;
 class LineWebhookController extends Controller
 {
     //
-    public function webhook(Request $request, CreateLineBot $createLineBot)
+    public function webhook(Request $request, CreateLineBot $createLineBot, Calculator $calculator)
     {
         $bot = $createLineBot->create($request);
 
@@ -27,7 +28,8 @@ class LineWebhookController extends Controller
             if ($messageType != 'text') continue;
 
             try {
-                $response = $bot->replyText($event['replyToken'], $message);
+                $replyMessage = $calculator->calculate($message);
+                $response = $bot->replyText($event['replyToken'], $replyMessage);
                 if ($response->isSucceeded()) {
                     logger('reply successfully');
                     return $this->http200('send success');
