@@ -20,11 +20,15 @@ class SendLineMessage implements ShouldQueue
      *
      * @return void
      */
-    protected Request $request;
+    protected array $requestArray;
+    protected $signature;
+    protected $content;
 
-    public function __construct(Request $request)
+    public function __construct($signature, $content, $requestArray)
     {
-        $this->request = $request;
+        $this->signature = $signature;
+        $this->content = $content;
+        $this->requestArray = $requestArray;
     }
 
     /**
@@ -38,9 +42,9 @@ class SendLineMessage implements ShouldQueue
     public function handle(CreateLineBot $createLineBot, Calculator $calculator)
     {
         //
-        $bot = $createLineBot->create($this->request);
+        $bot = $createLineBot->create($this->signature, $this->content);
 
-        $events = $this->request->events;
+        $events = $this->requestArray['events'];
         foreach ($events as $event) {
             // 不是訊息的event先不處理
             if ($event['type'] != 'message') continue;
