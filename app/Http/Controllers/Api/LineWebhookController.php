@@ -15,7 +15,7 @@ class LineWebhookController extends Controller
     {
         $signature = $request->header(LINEBot\Constant\HTTPHeader::LINE_SIGNATURE);
         $content = $request->getContent();
-        SendLineMessage::dispatch();
+        SendLineMessage::dispatch($signature, $content, $request->all());
         return $this->http200('done');
     }
 
