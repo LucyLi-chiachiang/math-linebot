@@ -27,7 +27,6 @@ class SendLineMessage implements ShouldQueue
 
     public function handle(CreateLineBot $createLineBot, Calculator $calculator)
     {
-        //
         $bot = $createLineBot->create($this->signature, $this->content);
 
         $events = $this->requestArray['events'];
