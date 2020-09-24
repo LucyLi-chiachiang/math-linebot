@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class LineWebhookTest extends TestCase
 {
-    public function testJobIsDispatched()
+    public function test_job_is_dispatched()
     {
         Queue::fake();
         // Assert that no jobs were pushed...

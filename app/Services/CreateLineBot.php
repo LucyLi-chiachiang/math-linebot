@@ -7,9 +7,6 @@ use LINE\LINEBot\HTTPClient\CurlHTTPClient;
 
 class CreateLineBot
 {
-    public function __construct()
-    {
-    }
 
     public function create($signature, $content)
     {
@@ -18,6 +15,7 @@ class CreateLineBot
             'channelSecret' => env('LINE_CHANNEL_SECRET')
         ]);
 
+        //Signature validation
         if (!$signature) {
             abort(403);
         }

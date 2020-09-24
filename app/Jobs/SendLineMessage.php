@@ -7,7 +7,6 @@ use App\Services\CreateLineBot;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Http\Request;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
@@ -15,11 +14,6 @@ class SendLineMessage implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
     protected array $requestArray;
     protected $signature;
     protected $content;
@@ -31,14 +25,6 @@ class SendLineMessage implements ShouldQueue
         $this->requestArray = $requestArray;
     }
 
-    /**
-     * Execute the job.
-     *
-     * @param CreateLineBot $createLineBot
-     * @param Calculator $calculator
-     * @return void
-     * @throws \ReflectionException
-     */
     public function handle(CreateLineBot $createLineBot, Calculator $calculator)
     {
         //
@@ -59,7 +45,6 @@ class SendLineMessage implements ShouldQueue
             if ($response->isSucceeded()) {
                 logger('reply successfully');
             }
-
         }
     }
 }

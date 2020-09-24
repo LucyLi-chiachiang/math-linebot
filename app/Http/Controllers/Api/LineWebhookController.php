@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use LINE\LINEBot;
 
-
 class LineWebhookController extends Controller
 {
     //

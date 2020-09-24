@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Services;
-
 
 class Calculator
 {
@@ -21,7 +19,6 @@ class Calculator
         {
             $result += $num;
         }
-
         return $result;
     }
 }

@@ -14,14 +14,14 @@ class FilterMessageTest extends TestCase
         $this->service = app()->make(FilterMessage::class);
     }
 
-    public function testMessageIsFiltered()
+    public function test_messages_is_filtered()
     {
         $originMessage = 'abc123eee';
         $result = $this->service->filter($originMessage);
         $this->assertEquals('123', $result);
     }
 
-    public function testNumbersAndSymbolsAreKept()
+    public function test_numbers_and_symbols_are_kept()
     {
         $originMessage = '123+321';
         $result = $this->service->filter($originMessage);

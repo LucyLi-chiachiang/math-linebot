@@ -16,13 +16,13 @@ class CalculatorTest extends TestCase
     }
 
 
-    public function testOnePlusOne()
+    public function test_one_plus_one()
     {
         $result = $this->calculator->calculate('1+1');
         $this->assertEquals(2, $result);
     }
 
-    public function testMultiPlus()
+    public function test_multiply_plus()
     {
         $result = $this->calculator->calculate('2+2+1');
         $this->assertEquals(5, $result);
